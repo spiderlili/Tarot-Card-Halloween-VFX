@@ -71,16 +71,14 @@ Shader "Custom/SparklyNightSkyStencil"
             fixed4 frag (v2f i) : SV_Target
             {
 	            float2 offset = frac(_Time.y * float2(_SparkleSpeedX, _SparkleSpeedY));
-            // 采样Albedo
 	            fixed4 col = tex2D(_MainTex, TRANSFORM_TEX(i.uv, _MainTex))*_Color;
                 fixed4 star01 = tex2D(_StarTex, TRANSFORM_TEX(i.uv, _StarTex));
-             //第二次采样星光贴图，并且加上视线方向，保证视角在转动的时候，第二次采样的UV做偏移
 	            //fixed4 star02 = tex2D(_StarTex, TRANSFORM_TEX(i.uv, _StarTex) + i.viewDir/5);    
 
                 fixed4 star02 = tex2D(_StarTex, TRANSFORM_TEX(i.uv, _StarTex) + i.viewDir/5 + offset);
                 col.rgb += (star01.rgb * star02.rgb * _StarColor);
                 // col.rgb += (star01.rgb * star02.rgb * _StarColor) * _Time.x;	
-            // apply fog
+                // apply fog
 	            UNITY_APPLY_FOG(i.fogCoord, col);
 	            return col;
             }
