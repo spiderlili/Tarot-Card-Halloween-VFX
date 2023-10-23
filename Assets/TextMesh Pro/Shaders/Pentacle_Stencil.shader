@@ -6,6 +6,8 @@ Shader "Custom/Pentacle_Stencil"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+        _GlowSpeed("Glow Speed", Range(0, 10)) = 10
+        _GlowAdd("Glow Add", Range(0, 0.5)) = 0.1
         [HDR] _EmissionColor("Color", Color) = (0,0,0)
         
         // Stencil
@@ -30,16 +32,16 @@ Shader "Custom/Pentacle_Stencil"
 
         sampler2D _MainTex;
         half4 _EmissionColor;
-
-
+        half _Glossiness;
+        half _Metallic;
+        fixed4 _Color;
+        half _GlowSpeed;
+        half _GlowAdd;
+        
         struct Input
         {
             float2 uv_MainTex;
         };
-
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -55,7 +57,8 @@ Shader "Custom/Pentacle_Stencil"
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Emission = c.rgb * tex2D(_MainTex, IN.uv_MainTex).a * _EmissionColor;
+            half glow = sin(_Time.y * _GlowSpeed) * _GlowAdd + _GlowAdd;
+            o.Emission = c.rgb * tex2D(_MainTex, IN.uv_MainTex).a * _EmissionColor + glow;
             o.Alpha = c.a;
         }
         ENDCG
