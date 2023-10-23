@@ -58,16 +58,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BloomBillboardIntensity: 0.6
+    - _BloomBillboardIntensity: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FlickerSpeed: 5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _ID: 1
     - _InvFade: 1
+    - _MaxBrightnessAdd: 0.4
     - _Metallic: 0
+    - _MinBrightnessAdd: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
