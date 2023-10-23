@@ -7,6 +7,9 @@
 		_ZOffset ("Z Offset", Range(-0.2, 0.2)) = -0.1
         _BloomBillboardIntensity("Intensity", Range(0,1)) = 1
         [HDR]_Tint("Tint", Color) = (1, 1, 1, 1)
+    	
+    	// Stencil
+    	_ID("Mask ID", Int) = 1
     }
  
   	SubShader
@@ -14,11 +17,17 @@
   		Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector" = "True" "DisableBatching" = "True"}
   		Pass
   		{
+	        Stencil
+  			{
+				Ref[_ID]
+				Comp equal
+	        }
+  			
   			// Blend SrcAlpha OneMinusSrcAlpha
   		    Blend One One
   			Cull Off Lighting Off ZWrite Off 
 
-  			CGPROGRAM
+            CGPROGRAM
   			#pragma vertex vert
   			#pragma fragment frag
 

@@ -1,4 +1,4 @@
-Shader "Toon/Lit StencilMask" {
+Shader "Toon/Lit StencilMask" { // mask back
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
@@ -8,7 +8,7 @@ Shader "Toon/Lit StencilMask" {
 	}
 
 	SubShader {
-		Tags { "RenderType"="Opaque" "Queue" = "Geometry+2"}
+		Tags { "RenderType"="Opaque" "Queue" = "Geometry+2"} // Important queue
 		LOD 200
 		
 		Stencil {

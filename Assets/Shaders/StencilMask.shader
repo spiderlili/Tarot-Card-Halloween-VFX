@@ -1,10 +1,10 @@
-﻿Shader "FX/StencilMask" {
+﻿Shader "FX/StencilMask" { // mask front
 	Properties{
 
 		_ID("Mask ID", Int) = 1
 	}
 		SubShader{
-			Tags{ "RenderType" = "Opaque" "Queue" = "Geometry+1" }
+			Tags{ "RenderType" = "Opaque" "Queue" = "Geometry+1" }  // Important queue
 			ColorMask 0
 			ZWrite off			
 			Stencil{

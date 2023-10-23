@@ -7,10 +7,18 @@ Shader "Custom/Pentacle_Stencil"
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
         [HDR] _EmissionColor("Color", Color) = (0,0,0)
+        
+        // Stencil
+        _ID("Mask ID", Int) = 1
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Stencil {
+			Ref [_ID]
+			Comp equal
+		}
+        
+        Tags { "RenderType"="Opaque" "Queue" = "Geometry+2"} // Important queue
         LOD 200
 
         CGPROGRAM
