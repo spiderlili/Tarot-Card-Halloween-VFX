@@ -51,7 +51,7 @@ Material:
     - _Scale2: 1.5
     - _WorldScale: 45
     m_Colors:
-    - _Color: {r: 0.11180795, g: 0.1521149, b: 0.3455882, a: 1}
+    - _Color: {r: 0.16078432, g: 0.30980393, b: 0.31764707, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _Random: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 1, g: 0.5586207, b: 0, a: 1}
