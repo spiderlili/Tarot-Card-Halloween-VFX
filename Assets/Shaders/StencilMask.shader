@@ -4,7 +4,7 @@
 		_ID("Mask ID", Int) = 1
 	}
 		SubShader{
-			Tags{ "RenderType" = "Opaque" "Queue" = "Geometry+1" }  // Important queue
+			Tags{ "RenderType" = "Opaque" "Queue" = "Geometry+1" }  
 			ColorMask 0
 			ZWrite off			
 			Stencil{

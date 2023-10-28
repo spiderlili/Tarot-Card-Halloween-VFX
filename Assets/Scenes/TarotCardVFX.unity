@@ -38617,7 +38617,7 @@ GameObject:
   - component: {fileID: 1686407862}
   - component: {fileID: 1686407861}
   m_Layer: 0
-  m_Name: MaskFrontQuad
+  m_Name: FrontQuadQuadStencil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
